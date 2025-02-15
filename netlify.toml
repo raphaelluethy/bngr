@@ -1,5 +1,3 @@
-
-
 [[headers]]
 for = "/**/*.js"
 [headers.values]
