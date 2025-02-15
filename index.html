@@ -125,8 +125,9 @@
         function copyToClipboard() {
             const copyIcon = document.getElementById("copyIcon");
             const notification = document.getElementById("notification");
+            const searchInput = document.querySelector('input[type="text"]');
 
-            navigator.clipboard.writeText("https://bngr.ch?q={q}").then(() => {
+            navigator.clipboard.writeText(searchInput.value).then(() => {
                 // Add animation class to icon
                 copyIcon.classList.add("copy-animation");
 
