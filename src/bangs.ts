@@ -1,16 +1,16 @@
 // This file was (mostly) ripped from https://duckduckgo.com/bang.js
 
 export const Bangs = [
-    {
-      c: "Search",
-      d: "www.kagi.com",
-      r: 0,
-      s: "Kagi Search",
-      sc: "Search",
-      t: "k",
-      u: "https://www.kagi.com/search?q={{{s}}}",
-    },
-    {
+  {
+    c: "Search",
+    d: "www.kagi.com",
+    r: 0,
+    s: "Kagi Search",
+    sc: "Search",
+    t: "k",
+    u: "https://www.kagi.com/search?q={{{s}}}",
+  },
+  {
     c: "AI",
     d: "www.t3.chat",
     r: 0,
