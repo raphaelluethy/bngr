@@ -11,6 +11,15 @@ export const Bangs = [
     u: "https://www.kagi.com/search?q={{{s}}}",
   },
   {
+    c: "Search",
+    d: "www.perplexity.ai",
+    r: 1254,
+    s: "Perplexity",
+    sc: "Search",
+    t: "p",
+    u: "https://www.perplexity.ai/search?q={{{s}}}",
+  },
+  {
     c: "AI",
     d: "www.t3.chat",
     r: 0,
@@ -83758,15 +83767,6 @@ export const Bangs = [
     sc: "Learning (intl)",
     t: "ppin",
     u: "http://dictionary.pinpinchinese.com/search/t/{{{s}}}",
-  },
-  {
-    c: "Multimedia",
-    d: "www.pinterest.com",
-    r: 1254,
-    s: "Pinterest",
-    sc: "Images",
-    t: "p",
-    u: "https://www.pinterest.com/search/pins/?q={{{s}}}",
   },
   {
     c: "Multimedia",
