@@ -63,7 +63,7 @@
                         type="text"
                         readonly
                         id="copyText"
-                        value="bngr.ch/search?q={q}"
+                        value="bngr.ch/search?q=%s"
                         class="w-full bg-gray-800 text-gray-300 font-mono p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 cursor-default select-all text-center"
                     />
                     <button
@@ -116,9 +116,9 @@
         engineSelect.addEventListener("change", () => {
             const selectedEngine = engineSelect.value;
             if (selectedEngine === "default") {
-                searchInput.value = `https://bngr.ch?q={q}`;
+                searchInput.value = `https://bngr.ch?q=%s`;
             } else {
-                searchInput.value = `https://bngr.ch?e=${selectedEngine}&q={q}`;
+                searchInput.value = `https://bngr.ch?e=${selectedEngine}&q=%s`;
             }
         });
 
