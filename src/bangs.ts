@@ -1,3 +1,5 @@
+// This file was (mostly) ripped from https://duckduckgo.com/bang.js
+
 export const Bangs = [
     {
       c: "Search",
