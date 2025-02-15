@@ -1,15 +1,5 @@
 # bngr.ch
 
-To install dependencies:
+Use your custom bangs with your search engine of choice.
 
-```bash
-bun install
-```
-
-To run:
-
-```bash
-bun run index.ts
-```
-
-This project was created using `bun init` in bun v1.2.2. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+Shamelessly inspired by [Theo's unduck](https://github.com/t3dotgg/unduck)
