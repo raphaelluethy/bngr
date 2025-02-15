@@ -1,25 +1,23 @@
 import { Bangs } from "./bangs.ts";
-const defaultBang = {
-  c: "Search",
-  d: "www.kagi.com",
-  r: 0,
-  s: "Kagi Search",
-  sc: "Search",
-  t: "k",
-  u: "https://www.kagi.com/search?q={{{s}}}",
-};
-const defaultUrl = "https://www.kagi.com";
 
 function getBang() {
   const url = new URL(window.location.href);
-  // const url = new URL("https://bngr.ch/search?q=hello!lkhfklsjfklsdf");
   const query = url.searchParams.get("q")?.trim() || "";
   if (!query) {
-    return defaultUrl;
+    console.log("No query");
+    return null;
   }
+
+  const defaultEngineUrl = url.searchParams.get("e") || "google";
+  const engineMatch = defaultEngineUrl.match(/!([a-z0-9]+)/i);
+  const defaultEngine = engineMatch?.[1] || "g";
+
   const match = query.match(/!([a-z0-9]+)/i);
   const potentialBang = match?.[1];
-  const bang = Bangs.find((bang) => bang.t === potentialBang);
+  const bang =
+    Bangs.find((bang) => bang.t === potentialBang) ||
+    Bangs.find((bang) => bang.t === defaultEngine) ||
+    Bangs.find((bang) => bang.t === "g");
 
   // Remove the first bang from the query
   const cleanQuery = query.replace(/![a-z0-9]+\s*/i, "").trim();
