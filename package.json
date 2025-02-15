@@ -7,8 +7,7 @@
         "build": "bun build ./index.html --minify --outdir=dist"
     },
     "devDependencies": {
-        "@types/bun": "latest",
-        "bun-plugin-tailwind": "^0.0.14"
+        "@types/bun": "latest"
     },
     "peerDependencies": {
         "typescript": "^5.0.0"
