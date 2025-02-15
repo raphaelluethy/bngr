@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="./styles.css" />
+        <link rel="icon" type="image/png" href="/public/logo.png">
         <script src="./src/main.ts" type="module"></script>
         <title>bngr.ch - Bang Search</title>
         <style>
@@ -54,37 +55,50 @@
                 <h2 class="text-2xl font-semibold mb-2">Use bangs without Kagi or Duckduckgo</h2>
                 <p class="text-gray-400 text-lg">Just add the following link as search engine query:</p>
             </div>
-
-            <div
-                class="relative bg-slate-800 rounded-lg shadow-lg border border-slate-700"
-            >
-                <input
-                    type="text"
-                    readonly
-                    value="bngr.ch/search?q={q}"
-                    class="w-full bg-gray-800 text-gray-300 font-mono p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 cursor-default select-all text-center"
-                />
-                <button
-                    id="copyButton"
-                    onclick="copyToClipboard()"
-                    class="absolute top-0 right-0 h-full px-4 flex items-center justify-center text-slate-400 hover:text-slate-200 focus:outline-none"
-                    title="Copy to clipboard"
+            <div class="flex items-center gap-4">
+                <div
+                    class="relative bg-slate-800 rounded-lg shadow-lg border border-slate-700 flex-1"
                 >
-                    <svg
-                        id="copyIcon"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-5 w-5"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
+                    <input
+                        type="text"
+                        readonly
+                        id="copyText"
+                        value="bngr.ch/search?q={q}"
+                        class="w-full bg-gray-800 text-gray-300 font-mono p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 cursor-default select-all text-center"
+                    />
+                    <button
+                        id="copyButton"
+                        onclick="copyToClipboard()"
+                        class="absolute top-0 right-0 h-full px-4 flex items-center justify-center text-slate-400 hover:text-slate-200 focus:outline-none"
+                        title="Copy to clipboard"
                     >
-                        <path
-                            d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"
-                        />
-                        <path
-                            d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"
-                        />
-                    </svg>
-                </button>
+                        <svg
+                            id="copyIcon"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                        >
+                            <path
+                                d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"
+                            />
+                            <path
+                                d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"
+                            />
+                        </svg>
+                    </button>
+                </div>
+
+                <select
+                    class="bg-slate-800 text-gray-300 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 border border-slate-700 h-[58px]"
+                    id="engineSelect"
+                >
+                    <option default value="default">Default</option>
+                    <option value="g">Google</option>
+                    <option value="s">StartPage</option>
+                    <option value="k">Kagi</option>
+                    <option value="b">Bing</option>
+                </select>
             </div>
             <!-- Notification -->
             <div
@@ -96,11 +110,23 @@
         </div>
 
         <script>
+        const engineSelect = document.getElementById("engineSelect");
+        const searchInput = document.querySelector('input[type="text"]');
+
+        engineSelect.addEventListener("change", () => {
+            const selectedEngine = engineSelect.value;
+            if (selectedEngine === "default") {
+                searchInput.value = `https://bngr.ch?q={q}`;
+            } else {
+                searchInput.value = `https://bngr.ch?e=${selectedEngine}&q={q}`;
+            }
+        });
+
         function copyToClipboard() {
             const copyIcon = document.getElementById("copyIcon");
             const notification = document.getElementById("notification");
 
-            navigator.clipboard.writeText("bngr.ch/search?q={q}").then(() => {
+            navigator.clipboard.writeText("https://bngr.ch?q={q}").then(() => {
                 // Add animation class to icon
                 copyIcon.classList.add("copy-animation");
 
