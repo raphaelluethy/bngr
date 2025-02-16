@@ -4,9 +4,7 @@ Use your custom bangs with your search engine of choice.
 
 It allows you to set the default search engine with the url itself.
 
-Idea taken from [Theo's unduck](https://github.com/t3dotgg/unduck)
-
-Some parts from his work were also taken over and / or adapted.
+Idea and some parts were taken from [Theo's unduck](https://github.com/t3dotgg/unduck) and adapted.
 
 ## Stack
 - ~Bun~ (Bundling with tailwind does not work...)
