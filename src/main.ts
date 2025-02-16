@@ -1,4 +1,4 @@
-import { Bangs } from "./bangs.ts";
+import { BangsMap } from "./bangs.ts";
 
 function getBang() {
   const url = new URL(window.location.href);
@@ -16,7 +16,7 @@ function getBang() {
   const potentialBang = match?.[1];
   const bangName = potentialBang || defaultEngine;
 
-  const bang = Bangs.find((bang) => bang.t === bangName);
+  const bang = BangsMap.get(bangName);
 
   // Remove the first bang from the query
   const cleanQuery = query.replace(/![a-z0-9]+\s*/i, "").trim();

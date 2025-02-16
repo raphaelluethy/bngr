@@ -122081,3 +122081,8 @@ export const Bangs = [
     u: "http://astronet.ge/?s={{{s}}}",
   },
 ];
+
+export const BangsMap = new Map<string, Bang>();
+Bangs.forEach((bang) => {
+  BangsMap.set(bang.t, bang);
+});
