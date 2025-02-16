@@ -14,7 +14,7 @@ I also copied the bangs file from his repository into mine.
 
 ## What does it do
 - Allows you to set the default search engine with the url itself.
-- Supports (DuckDuckGo bangs)[https://duckduckgo.com/bangs] and some custom ones (if you need one just open a pr).
+- Supports [DuckDuckGo bangs](https://duckduckgo.com/bangs) and some custom ones (if you need one just open a pr).
 - Heavy caching to keep loadtimes minimal.
 - Using some HTML hacks to run redirects faster.
 - (Hopefully) no flashbang when loading.
