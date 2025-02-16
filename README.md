@@ -14,7 +14,7 @@ Some parts from his work were taken over and / or adapted.
 
 ## What does it do
 - Allows you to set the default search engine with the url itself.
-- Supports some of [DuckDuckGo bangs](https://duckduckgo.com/bangs) and some custom ones (if you need one just open a pr).
+- Supports most of [DuckDuckGo bangs](https://duckduckgo.com/bangs) and some custom ones (if you need one just open a pr).
 - I own it so I get to add / change bangs to my liking.
 - Heavy caching to keep loadtimes minimal.
 - Using some HTML hacks to run redirects faster.
