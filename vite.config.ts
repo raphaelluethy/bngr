@@ -3,7 +3,7 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
 	plugins: [tailwindcss()],
-	assetsInclude: ["**/template.html"],
+	assetsInclude: ["**/src/*.html"],
 	build: {
 		rollupOptions: {
 			input: "index.html",
