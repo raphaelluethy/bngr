@@ -37,22 +37,32 @@
     </style>
 </head>
 
-<body class="min-h-screen bg-gradient-to-b from-zinc-950 to-zinc-800 text-zinc-200 flex items-center justify-center p-4">
-
-
-    <div id="app"></div>
+<body
+    class="min-h-screen min-w-screen bg-gradient-to-b from-zinc-950 to-zinc-800 text-zinc-200 flex items-center justify-center p-4">
+    <div id="app" class="w-full h-full flex items-center justify-center"></div>
 
     <script>
-        const engineSelect = document.getElementById("engineSelect");
-        const searchInput = document.querySelector('input[type="text"]');
+        document.addEventListener('DOMContentLoaded', () => {
+            const appDiv = document.getElementById("app");
 
-        engineSelect.addEventListener("change", () => {
-            const selectedEngine = engineSelect.value;
-            if (selectedEngine === "g") {
-                searchInput.value = `https://bngr.ch?q=%s`;
-            } else {
-                searchInput.value = `https://bngr.ch?e=${selectedEngine}&q=%s`;
-            }
+            // Wait for the innerHTML to be updated
+            const checkForElements = setInterval(() => {
+                const engineSelect = document.getElementById("engineSelect");
+                const searchInput = document.querySelector('input[type="text"]');
+
+                if (engineSelect && searchInput) {
+                    clearInterval(checkForElements);
+
+                    engineSelect.addEventListener("change", () => {
+                        const selectedEngine = engineSelect.value;
+                        if (selectedEngine === "g") {
+                            searchInput.value = `https://bngr.ch?q=%s`;
+                        } else {
+                            searchInput.value = `https://bngr.ch?e=${selectedEngine}&q=%s`;
+                        }
+                    });
+                }
+            }, 100);
         });
 
         function copyToClipboard() {
