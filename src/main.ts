@@ -25,7 +25,7 @@ function getBang() {
   // https://www.google.com/search?q={{{s}}}
   const searchUrl = bang?.u.replace(
     "{{{s}}}",
-    // Replace %2F with / to fix formats like "!ghr+t3dotgg/unduck"
+    // Replace %2F with / to fix formats like "!ghr+..."
     encodeURIComponent(cleanQuery).replace(/%2F/g, "/"),
   );
   if (!searchUrl) return null;
