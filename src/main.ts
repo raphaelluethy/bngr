@@ -4,9 +4,10 @@ import template from "./template.html?raw";
 
 function getBang() {
     const url = new URL(window.location.href);
-    const query = url.searchParams.get("q")?.trim() || "";
+    let query = url.searchParams.get("q")?.trim() || "";
     if (!query) {
         renderDefaultPage();
+        console.log("No query");
         return null;
     }
 
@@ -14,14 +15,23 @@ function getBang() {
     const engineMatch = defaultEngineUrl.match(/([a-z0-9]+)/i);
     const defaultEngine = engineMatch?.[0] || "g";
 
+    const isPassThrough = query.startsWith("|");
+    if (isPassThrough) {
+        query = query.slice(1).trim();
+    }
+
     const match = query.match(/!([a-z0-9]+)/i);
     const potentialBang = match?.[1];
-    const bangName = potentialBang || defaultEngine;
+    const bangName = isPassThrough
+        ? defaultEngine
+        : potentialBang || defaultEngine;
 
     const bang = BangsMap.get(bangName);
 
     // Remove the first bang from the query
-    const cleanQuery = query.replace(/![a-z0-9]+\s*/i, "").trim();
+    const cleanQuery = isPassThrough
+        ? query
+        : query.replace(/![a-z0-9]+\s*/i, "").trim();
 
     // Format of the url is:
     // https://www.google.com/search?q={{{s}}}
