@@ -1,3 +1,4 @@
+// some parts were re-used from t3dogg/unduck
 import { BangsMap } from "./bangs.ts";
 
 function getBang() {
@@ -25,7 +26,7 @@ function getBang() {
   // https://www.google.com/search?q={{{s}}}
   const searchUrl = bang?.u.replace(
     "{{{s}}}",
-    // Replace %2F with / to fix formats like "!ghr+t3dotgg/unduck" -- from t3dogg/unduck
+    // Replace %2F with / to fix formats like "!ghr+t3dotgg/unduck"
     encodeURIComponent(cleanQuery).replace(/%2F/g, "/"),
   );
   if (!searchUrl) return null;
