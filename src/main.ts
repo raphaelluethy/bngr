@@ -10,19 +10,13 @@ function getBang() {
 
   const defaultEngineUrl = url.searchParams.get("e") || "google";
   const engineMatch = defaultEngineUrl.match(/([a-z0-9]+)/i);
-  console.log(`Default engine URL: ${defaultEngineUrl}`);
   const defaultEngine = engineMatch?.[0] || "g";
-  console.log(`Default engine: ${defaultEngine}`);
 
   const match = query.match(/!([a-z0-9]+)/i);
   const potentialBang = match?.[1];
-  console.log(`Potential bang: ${potentialBang}`);
   const bangName = potentialBang || defaultEngine;
-  console.log(`Bang name: ${bangName}`);
 
-  const bang =
-    Bangs.find((bang) => bang.t === potentialBang) ||
-    Bangs.find((bang) => bang.t === defaultEngine);
+  const bang = Bangs.find((bang) => bang.t === bangName);
 
   // Remove the first bang from the query
   const cleanQuery = query.replace(/![a-z0-9]+\s*/i, "").trim();
