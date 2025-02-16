@@ -5,7 +5,7 @@ Use your custom bangs with your search engine of choice.
 It allows you to set the default search engine with the url itself.
 
 Idea was shamelessly taken from [Theo's unduck](https://github.com/t3dotgg/unduck)
-I also copied the bangs file from his repository into mine.
+Some parts from his work were taken over and / or adapted.
 
 ## Stack
 - ~Bun~ (Bundling with tailwind does not work...)
@@ -15,6 +15,7 @@ I also copied the bangs file from his repository into mine.
 ## What does it do
 - Allows you to set the default search engine with the url itself.
 - Supports [DuckDuckGo bangs](https://duckduckgo.com/bangs) and some custom ones (if you need one just open a pr).
+- I own it so I get to add / change bangs to my liking.
 - Heavy caching to keep loadtimes minimal.
 - Using some HTML hacks to run redirects faster.
 - (Hopefully) no flashbang when loading.
