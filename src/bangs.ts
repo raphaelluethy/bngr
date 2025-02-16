@@ -11,6 +11,15 @@ export const Bangs = [
     u: "https://www.kagi.com/search?q={{{s}}}",
   },
   {
+    c: "Chat",
+    d: "www.chatgpt.com",
+    r: 0,
+    s: "ChatGPT",
+    sc: "AI",
+    t: "c",
+    u: "https://chatgpt.com/?q={{{s}}}&hints=search&temporary-chat=true",
+  },
+  {
     c: "Search",
     d: "www.perplexity.ai",
     r: 1254,
@@ -26,7 +35,7 @@ export const Bangs = [
     s: "T3 Chat",
     sc: "AI",
     t: "t3",
-    u: "https://www.t3.chat/new?q={{{s}}}",
+    u: "https://t3.chat/new?q={{{s}}}",
   },
   {
     c: "Tech",
@@ -16006,7 +16015,7 @@ export const Bangs = [
     r: 165,
     s: "CNET",
     sc: "Downloads",
-    t: "c",
+    t: "cnet",
     u: "http://www.cnet.com/1770-5_1-0.html?query={{{s}}}",
   },
   {
