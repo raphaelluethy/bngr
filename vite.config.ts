@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
     VitePWA({
-      injectRegister: "auto",
+      registerType: "autoUpdate",
     }),
   ],
   assetsInclude: ["**/src/*.html"],
