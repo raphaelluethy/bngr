@@ -21,5 +21,10 @@ Idea and some parts were taken from [Theo's unduck](https://github.com/t3dotgg/u
 - (Hopefully) no flashbang when loading.
 - Serving as a fun exercise.
 
+## Raycast Extension
+
+You can find the raycast extension here: [bngr search](https://github.com/raphaelluethy/bngr-search).
+I will publish it when I have more time.
+
 ## Status
 [![Netlify Status](https://api.netlify.com/api/v1/badges/4674f8c0-e457-4848-8b6a-f08c84dee299/deploy-status)](https://app.netlify.com/sites/bngr/deploys)
