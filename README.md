@@ -23,7 +23,3 @@ Idea and some parts were taken from [Theo's unduck](https://github.com/t3dotgg/u
 
 ## Status
 [![Netlify Status](https://api.netlify.com/api/v1/badges/4674f8c0-e457-4848-8b6a-f08c84dee299/deploy-status)](https://app.netlify.com/sites/bngr/deploys)
-
-
-## Flow
-
