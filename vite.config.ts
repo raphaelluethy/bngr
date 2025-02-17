@@ -14,5 +14,9 @@ export default defineConfig({
     rollupOptions: {
       input: "index.html",
     },
+    // Add these options
+    outDir: "dist",
+    target: "es2015",
+    sourcemap: false,
   },
 });
