@@ -14,6 +14,14 @@ export const Bangs = [
         u: "https://www.perplexity.ai/search?q={{{s}}}",
     },
     {
+        t: "t3r",
+        u: "https://t3.chat/new?model=gpt-4o&q={{{s}}}",
+    },
+    {
+        t: "t3c",
+        u: "https://t3.chat/new?model=gpt-4o&q={{{s}}}",
+    },
+    {
         t: "t3",
         u: "https://t3.chat/new?q={{{s}}}",
     },
