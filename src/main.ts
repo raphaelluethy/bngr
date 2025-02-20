@@ -7,7 +7,6 @@ function getBang() {
     let query = url.searchParams.get("q")?.trim() || "";
     if (!query) {
         renderDefaultPage();
-        console.log("No query");
         return null;
     }
 
