@@ -27,18 +27,26 @@ async function getBang() {
         : potentialBang || defaultEngine;
 
     // First check custom bangs
-    const customBang = await db.customBangs.where('bang').equals(bangName).first();
+    const customBang = await db.customBangs
+        .where("bang")
+        .equals(bangName)
+        .first();
     if (customBang) {
         // Remove the first bang from the query
         const cleanQuery = isPassThrough
             ? query
             : query.replace(/![a-z0-9]+\s*/i, "").trim();
 
-        return customBang.url.replace("{query}", encodeURIComponent(cleanQuery));
+        // return from custom bang
+        console.log(`Redirecting to: ${customBang.url}`);
+        return customBang.url.replace(
+            "{query}",
+            encodeURIComponent(cleanQuery),
+        );
     }
 
     // If no custom bang found, check predefined bangs
-    const bang = BangsMap.get(bangName);
+    const bang = BangsMap.get(bangName) || BangsMap.get(defaultEngine);
 
     // Remove the first bang from the query
     const cleanQuery = isPassThrough
@@ -52,8 +60,16 @@ async function getBang() {
         // Replace %2F with / to fix formats like "!ghr+t3dotgg/unduck"
         encodeURIComponent(cleanQuery).replace(/%2F/g, "/"),
     );
-    if (!searchUrl) return null;
+    if (!searchUrl) {
+        // this should never happen
+        console.error(
+            `This should never happen; I messed up somewhere royally. Please open an issue with your query!: ${query}`,
+        );
+        renderDefaultPage();
+        return null;
+    }
 
+    // return from searchUrl
     return searchUrl;
 }
 

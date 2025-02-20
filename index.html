@@ -1,96 +1,118 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Critical module preloading -->
-    <link rel="modulepreload" href="/src/main.ts" as="script" crossorigin="anonymous" fetchpriority="high" />
+    <link
+      rel="modulepreload"
+      href="/src/main.ts"
+      as="script"
+      crossorigin="anonymous"
+      fetchpriority="high"
+    />
     <title>bngr.ch - Bang Search</title>
     <!-- Defer non-critical resources -->
     <link rel="stylesheet" href="/src/styles.css" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/public/favicon/apple-touch-icon-180x180.png">
-    <meta name="msapplication-TileImage" content="/public/favicon/mstile-150x150.png">
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon/favicon-16x16.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon/apple-touch-icon-180x180.png"
+    />
+    <meta
+      name="msapplication-TileImage"
+      content="/favicon/mstile-150x150.png"
+    />
     <style>
-        @keyframes copyAnimation {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.2);
-            }
-
-            100% {
-                transform: scale(1);
-            }
+      @keyframes copyAnimation {
+        0% {
+          transform: scale(1);
         }
 
-        .copy-animation {
-            animation: copyAnimation 0.3s ease-in-out;
+        50% {
+          transform: scale(1.2);
         }
+
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .copy-animation {
+        animation: copyAnimation 0.3s ease-in-out;
+      }
     </style>
-</head>
+  </head>
 
-<body
-    class="min-h-screen bg-linear-45 from-zinc-950 to-zinc-800 text-zinc-200 firefox:bg-gradient-to-l firefox:from-zinc-900 firefox:to-zinc-900 flex items-center justify-center p-4">
+  <body
+    class="min-h-screen bg-linear-45 from-zinc-950 to-zinc-800 text-zinc-200 firefox:bg-gradient-to-l firefox:from-zinc-900 firefox:to-zinc-900 flex items-center justify-center p-4"
+  >
     <div id="app" class="w-full h-full flex items-center justify-center"></div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const appDiv = document.getElementById("app");
+      document.addEventListener("DOMContentLoaded", () => {
+        const appDiv = document.getElementById("app");
 
-            // Wait for the innerHTML to be updated
-            const checkForElements = setInterval(() => {
-                const engineSelect = document.getElementById("engineSelect");
-                const searchInput = document.querySelector('input[type="text"]');
+        // Wait for the innerHTML to be updated
+        const checkForElements = setInterval(() => {
+          const engineSelect = document.getElementById("engineSelect");
+          const searchInput = document.querySelector('input[type="text"]');
 
-                if (engineSelect && searchInput) {
-                    clearInterval(checkForElements);
+          if (engineSelect && searchInput) {
+            clearInterval(checkForElements);
 
-                    engineSelect.addEventListener("change", () => {
-                        const selectedEngine = engineSelect.value;
-                        if (selectedEngine === "g") {
-                            searchInput.value = `https://bngr.ch?q=%s`;
-                        } else {
-                            searchInput.value = `https://bngr.ch?e=${selectedEngine}&q=%s`;
-                        }
-                    });
-                }
-            }, 100);
-        });
-
-        function copyToClipboard() {
-            const copyIcon = document.getElementById("copyIcon");
-            const notification = document.getElementById("notification");
-            const searchInput = document.querySelector('input[type="text"]');
-
-            navigator.clipboard.writeText(searchInput.value).then(() => {
-                // Add animation class to icon
-                copyIcon.classList.add("copy-animation");
-
-                // Show notification
-                notification.classList.remove("translate-y-16", "opacity-0");
-                notification.classList.add("translate-y-0", "opacity-100");
-
-                // Remove animation class after it completes
-                setTimeout(() => {
-                    copyIcon.classList.remove("copy-animation");
-                }, 300);
-
-                // Hide notification after 2 seconds
-                setTimeout(() => {
-                    notification.classList.add("translate-y-16", "opacity-0");
-                    notification.classList.remove("translate-y-0", "opacity-100");
-                }, 2000);
+            engineSelect.addEventListener("change", () => {
+              const selectedEngine = engineSelect.value;
+              if (selectedEngine === "g") {
+                searchInput.value = `https://bngr.ch?q=%s`;
+              } else {
+                searchInput.value = `https://bngr.ch?e=${selectedEngine}&q=%s`;
+              }
             });
-        }
+          }
+        }, 100);
+      });
+
+      function copyToClipboard() {
+        const copyIcon = document.getElementById("copyIcon");
+        const notification = document.getElementById("notification");
+        const searchInput = document.querySelector('input[type="text"]');
+
+        navigator.clipboard.writeText(searchInput.value).then(() => {
+          // Add animation class to icon
+          copyIcon.classList.add("copy-animation");
+
+          // Show notification
+          notification.classList.remove("translate-y-16", "opacity-0");
+          notification.classList.add("translate-y-0", "opacity-100");
+
+          // Remove animation class after it completes
+          setTimeout(() => {
+            copyIcon.classList.remove("copy-animation");
+          }, 300);
+
+          // Hide notification after 2 seconds
+          setTimeout(() => {
+            notification.classList.add("translate-y-16", "opacity-0");
+            notification.classList.remove("translate-y-0", "opacity-100");
+          }, 2000);
+        });
+      }
     </script>
 
     <!-- Critical module loading -->
     <script src="/src/main.ts" type="module" fetchpriority="high"></script>
-</body>
-
+  </body>
 </html>
