@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Custom Bangs - bngr.ch</title>
+    <link rel="stylesheet" href="src/styles.css">
+</head>
+
+<body class="bg-zinc-900 text-gray-300 min-h-screen p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl font-bold mb-8 text-center">Manage Custom Bangs</h1>
+
+        <!-- Add/Edit Form -->
+        <form id="bangForm" class="mb-8 bg-zinc-800 p-6 rounded-lg shadow-lg border border-zinc-700">
+            <input type="hidden" id="editId">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label for="bang" class="block text-sm font-medium mb-2">Bang (without !)</label>
+                    <input type="text" id="bang" required
+                        class="w-full bg-zinc-700 border border-zinc-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-zinc-500">
+                </div>
+                <div>
+                    <label for="url" class="block text-sm font-medium mb-2">URL Template (use {query} for search
+                        term)</label>
+                    <input type="text" id="url" required
+                        class="w-full bg-zinc-700 border border-zinc-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-zinc-500">
+                </div>
+            </div>
+            <div class="mb-4">
+                <label for="description" class="block text-sm font-medium mb-2">Description</label>
+                <input type="text" id="description" required
+                    class="w-full bg-zinc-700 border border-zinc-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-zinc-500">
+            </div>
+            <div class="flex justify-end gap-4">
+                <button type="button" id="cancelButton"
+                    class="hidden px-4 py-2 bg-zinc-700 text-gray-300 rounded-lg hover:bg-zinc-600">
+                    Cancel
+                </button>
+                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                    Save Bang
+                </button>
+            </div>
+        </form>
+
+        <!-- Bangs Table -->
+        <div class="overflow-x-auto bg-zinc-800 rounded-lg shadow-lg border border-zinc-700">
+            <table class="w-full">
+                <thead>
+                    <tr class="border-b border-zinc-700">
+                        <th class="px-6 py-3 text-left">Bang</th>
+                        <th class="px-6 py-3 text-left">URL Template</th>
+                        <th class="px-6 py-3 text-left">Description</th>
+                        <th class="px-6 py-3 text-right">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="bangsTableBody">
+                    <!-- Rows will be added dynamically -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification"
+        class="fixed bottom-4 right-4 px-4 py-2 rounded-lg transform translate-y-16 opacity-0 transition-all duration-300">
+    </div>
+
+    <script type="module" src="src/custom.ts"></script>
+    <!-- Footer -->
+    <footer class="fixed bottom-4 left-0 w-full text-center">
+        <div class="flex justify-center space-x-6 text-gray-200">
+            <a href="https://github.com/raphaelluethy/bngr" class="hover:text-gray-200 transition-colors"
+                target="_blank" rel="noopener noreferrer">
+                Repository
+            </a>
+            <a href="https://raphaelluethy.ch" class="hover:text-gray-200 transition-colors" target="_blank"
+                rel="noopener noreferrer">
+                Personal Website
+            </a>
+            <a href="https://github.com/raphaelluethy" class="hover:text-gray-200 transition-colors" target="_blank"
+                rel="noopener noreferrer">
+                GitHub
+            </a>
+            <a href="/index.html" class="hover:text-gray-200 transition-colors">
+                Home
+            </a>
+        </div>
+    </footer>
+</body>
+
+</html>

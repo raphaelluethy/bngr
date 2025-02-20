@@ -1,8 +1,9 @@
 // some parts were re-used from t3dogg/unduck
 import { BangsMap } from "./bangs.ts";
 import template from "./template.html?raw";
+import { db } from "./db";
 
-function getBang() {
+async function getBang() {
     const url = new URL(window.location.href);
     let query = url.searchParams.get("q")?.trim() || "";
     if (!query) {
@@ -25,6 +26,18 @@ function getBang() {
         ? defaultEngine
         : potentialBang || defaultEngine;
 
+    // First check custom bangs
+    const customBang = await db.customBangs.where('bang').equals(bangName).first();
+    if (customBang) {
+        // Remove the first bang from the query
+        const cleanQuery = isPassThrough
+            ? query
+            : query.replace(/![a-z0-9]+\s*/i, "").trim();
+
+        return customBang.url.replace("{query}", encodeURIComponent(cleanQuery));
+    }
+
+    // If no custom bang found, check predefined bangs
     const bang = BangsMap.get(bangName);
 
     // Remove the first bang from the query
@@ -44,8 +57,8 @@ function getBang() {
     return searchUrl;
 }
 
-function doRedirect() {
-    const searchUrl = getBang();
+async function doRedirect() {
+    const searchUrl = await getBang();
     if (!searchUrl) return;
     window.location.replace(searchUrl);
 }

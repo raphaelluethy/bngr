@@ -12,9 +12,11 @@ export default defineConfig({
   assetsInclude: ["**/src/*.html"],
   build: {
     rollupOptions: {
-      input: "index.html",
+      input: {
+        main: "index.html",
+        manageBangs: "manage-bangs.html",
+      },
     },
-    // Add these options
     outDir: "dist",
     target: "es2015",
     sourcemap: false,
