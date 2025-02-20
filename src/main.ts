@@ -1,7 +1,7 @@
 // some parts were re-used from t3dogg/unduck
 import { BangsMap } from "./bangs.ts";
 import template from "./template.html?raw";
-import { db } from "./db";
+import { CustomBang, db } from "./db";
 
 async function getBang() {
     const url = new URL(window.location.href);
@@ -27,41 +27,29 @@ async function getBang() {
         : potentialBang || defaultEngine;
 
     // First check custom bangs
-    const customBang = await db.customBangs
+    const customBang = (await db.customBangs
         .where("bang")
         .equals(bangName)
-        .first();
+        .first()) as CustomBang | undefined;
     if (customBang) {
-        // Remove the first bang from the query
-        const cleanQuery = isPassThrough
-            ? query
-            : query.replace(/![a-z0-9]+\s*/i, "").trim();
-
-        // return from custom bang
-        console.log(`Redirecting to: ${customBang.url}`);
-        return customBang.url.replace(
-            "{query}",
-            encodeURIComponent(cleanQuery),
-        );
+        const cleanQuery = handlePassThrough(isPassThrough, query);
+        const queryUrl = customBang.url.replace("{query}", "{{{s}}}");
+        return fixUrl(queryUrl, cleanQuery);
     }
 
     // If no custom bang found, check predefined bangs
     const bang = BangsMap.get(bangName) || BangsMap.get(defaultEngine);
+    if (!bang) {
+        console.error(
+            `This should never happen; I messed up somewhere royally. Please open an issue with your query!: ${query}`,
+        );
+        renderDefaultPage();
+        return null;
+    }
 
-    // Remove the first bang from the query
-    const cleanQuery = isPassThrough
-        ? query
-        : query.replace(/![a-z0-9]+\s*/i, "").trim();
-
-    // Format of the url is:
-    // https://www.google.com/search?q={{{s}}}
-    const searchUrl = bang?.u.replace(
-        "{{{s}}}",
-        // Replace %2F with / to fix formats like "!ghr+t3dotgg/unduck"
-        encodeURIComponent(cleanQuery).replace(/%2F/g, "/"),
-    );
+    const cleanQuery = handlePassThrough(isPassThrough, query);
+    const searchUrl = fixUrl(bang.u, cleanQuery);
     if (!searchUrl) {
-        // this should never happen
         console.error(
             `This should never happen; I messed up somewhere royally. Please open an issue with your query!: ${query}`,
         );
@@ -71,6 +59,20 @@ async function getBang() {
 
     // return from searchUrl
     return searchUrl;
+}
+
+function handlePassThrough(isPassThrough: boolean, query: string) {
+    return isPassThrough ? query : query.replace(/![a-z0-9]+\s*/i, "").trim();
+}
+
+function fixUrl(queryUrl: string, cleanQuery: string) {
+    // Format of the url is:
+    // https://www.google.com/search?q={{{s}}}
+    return queryUrl.replace(
+        "{{{s}}}",
+        // Replace %2F with / to fix formats like "!ghr+t3dotgg/unduck"
+        encodeURIComponent(cleanQuery).replace(/%2F/g, "/"),
+    );
 }
 
 async function doRedirect() {
