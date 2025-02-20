@@ -14,6 +14,7 @@ Idea and some parts were taken from [Theo's unduck](https://github.com/t3dotgg/u
 ## What does it do
 - Allows you to set the default search engine with the url itself.
 - You can add a `|` (pipe operator) in front of the search query to pass it directly to the default search engine.
+- Supports custom bangs that overwrite the DuckDuckGo bangs.
 - Supports most of [DuckDuckGo bangs](https://duckduckgo.com/bangs) and some custom ones (if you need one just open a pr).
 - I own it so I get to add / change bangs to my liking.
 - Heavy caching to keep loadtimes minimal.
