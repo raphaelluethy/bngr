@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 @custom-variant firefox {
-    @supports (-moz-appearance: none) {
-        & {
-            @slot;
-        }
+  @supports (-moz-appearance: none) {
+    & {
+      @slot;
     }
+  }
 }
