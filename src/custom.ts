@@ -23,14 +23,15 @@ async function loadBangs() {
 
     bangs.forEach((bang) => {
         const row = document.createElement("tr");
-        row.className = "border-b border-zinc-700 hover:bg-zinc-700/50";
+        row.className =
+            "border-b border-zinc-400 dark:border-zinc-700 hover:bg-zinc-300/50 dark:hover:bg-zinc-700/50 transition-colors duration-300";
         row.innerHTML = `
             <td class="px-6 py-4">${bang.bang}</td>
             <td class="px-6 py-4">${bang.url}</td>
             <td class="px-6 py-4">${bang.description}</td>
             <td class="px-6 py-4 text-right">
-                <button onclick="editBang(${bang.id})" class="text-blue-400 hover:text-blue-300 mr-3">Edit</button>
-                <button onclick="deleteBang(${bang.id})" class="text-red-400 hover:text-red-300">Delete</button>
+                <button onclick="editBang(${bang.id})" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 mr-3 transition-colors duration-300">Edit</button>
+                <button onclick="deleteBang(${bang.id})" class="text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-300 transition-colors duration-300">Delete</button>
             </td>
         `;
         bangsTableBody.appendChild(row);
@@ -41,7 +42,9 @@ async function loadBangs() {
 function showNotification(message: string, isError = false) {
     notification.textContent = message;
     notification.className = `fixed bottom-4 right-4 px-4 py-2 rounded-lg transform transition-all duration-300 ${
-        isError ? "bg-red-500" : "bg-green-500"
+        isError
+            ? "bg-red-500 dark:bg-red-600"
+            : "bg-green-500 dark:bg-green-600"
     } text-white`;
     notification.style.transform = "translateY(0)";
     notification.style.opacity = "1";

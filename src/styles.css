@@ -7,3 +7,24 @@
     }
   }
 }
+
+/* Base styles for light/dark mode */
+:root {
+  color-scheme: light dark;
+}
+
+/* Smooth transitions between light and dark mode */
+html.light {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+/* Ensure transitions are smooth */
+*, ::before, ::after {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}

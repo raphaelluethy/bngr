@@ -12,36 +12,44 @@
     <!-- Title -->
     <div class="text-center mb-12">
       <h1
-        class="text-7xl font-bold bg-gradient-to-tr from-zinc-100 to-zinc-300 text-transparent bg-clip-text mb-1 leading-relaxed py-1"
+        class="text-7xl font-bold bg-gradient-to-tr from-zinc-700 to-zinc-900 dark:from-zinc-100 dark:to-zinc-300 text-transparent bg-clip-text mb-1 leading-relaxed py-1 transition-colors duration-300"
       >
         bngr.ch
       </h1>
-      <p class="text-gray-400 text-lg">Universal Bang Search</p>
+      <p
+        class="text-gray-600 dark:text-gray-400 text-lg transition-colors duration-300"
+      >
+        Universal Bang Search
+      </p>
     </div>
 
-    <div class="mb-6 text-gray-300 text-center">
+    <div
+      class="mb-6 text-gray-700 dark:text-gray-300 text-center transition-colors duration-300"
+    >
       <h2 class="text-2xl font-semibold mb-2">
         Use bangs without Kagi or Duckduckgo
       </h2>
-      <p class="text-gray-400 text-lg">
+      <p
+        class="text-gray-600 dark:text-gray-400 text-lg transition-colors duration-300"
+      >
         Just add the following link as search engine query:
       </p>
     </div>
     <div class="flex items-center gap-4">
       <div
-        class="relative bg-zinc-800 rounded-lg shadow-lg border border-zinc-700 flex-1"
+        class="relative bg-white dark:bg-zinc-800 rounded-lg shadow-lg border border-zinc-300 dark:border-zinc-700 flex-1 transition-colors duration-300"
       >
         <input
           type="text"
           readonly
           id="copyText"
           value="https://bngr.ch?q=%s"
-          class="w-full bg-zinc-800 text-zinc-300 font-mono p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-zinc-500 cursor-default select-all text-center"
+          class="w-full bg-white dark:bg-zinc-800 text-zinc-800 dark:text-zinc-300 font-mono p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-zinc-500 cursor-default select-all text-center transition-colors duration-300"
         />
         <button
           id="copyButton"
           onclick="copyToClipboard()"
-          class="absolute top-0 right-0 h-full px-4 flex items-center justify-center text-zinc-400 hover:text-zinc-200 focus:outline-none"
+          class="absolute top-0 right-0 h-full px-4 flex items-center justify-center text-zinc-600 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200 focus:outline-none transition-colors duration-300"
           title="Copy to clipboard"
         >
           <svg
@@ -60,7 +68,7 @@
       </div>
 
       <select
-        class="bg-zinc-800 text-zinc-300 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-zinc-500 border border-zinc-700 h-[58px]"
+        class="bg-white dark:bg-zinc-800 text-zinc-800 dark:text-zinc-300 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-zinc-500 border border-zinc-300 dark:border-zinc-700 h-[58px] transition-colors duration-300"
         id="engineSelect"
       >
         <option default value="g">Default (Google)</option>
@@ -70,17 +78,26 @@
         <option value="b">Bing</option>
       </select>
     </div>
-    <div class="mb-6 mt-6 text-gray-300 text-center">
-      <p class="text-gray-400 text-l">
+    <div
+      class="mb-6 mt-6 text-gray-700 dark:text-gray-300 text-center transition-colors duration-300"
+    >
+      <p
+        class="text-gray-600 dark:text-gray-400 text-l transition-colors duration-300"
+      >
         Most of
-        <a href="https://duckduckgo.com/bangs">Duckduckgo's bangs</a> are
-        supported.
+        <a
+          href="https://duckduckgo.com/bangs"
+          class="text-blue-600 dark:text-blue-400 hover:underline transition-colors duration-300"
+          >Duckduckgo's bangs</a
+        >
+        are supported.
       </p>
       <p class="text-m">
         There is also a
         <a
           href="https://github.com/raphaelluethy/bngr-search"
           rel="noopener noreferrer"
+          class="text-blue-600 dark:text-blue-400 hover:underline transition-colors duration-300"
           >Raycast Extension</a
         >
         available (WIP).
@@ -90,7 +107,7 @@
     <!-- Notification -->
     <div
       id="notification"
-      class="fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg transform translate-y-16 opacity-0 transition-all duration-300"
+      class="fixed bottom-4 right-4 bg-green-500 dark:bg-green-600 text-white px-4 py-2 rounded-lg transform translate-y-16 opacity-0 transition-all duration-300"
     >
       Copied to clipboard! 📋
     </div>
@@ -99,10 +116,12 @@
 
 <!-- Footer -->
 <footer class="fixed bottom-4 left-0 w-full text-center">
-  <div class="flex justify-center space-x-6 text-gray-200">
+  <div
+    class="flex justify-center space-x-6 text-gray-700 dark:text-gray-200 transition-colors duration-300"
+  >
     <a
       href="https://github.com/raphaelluethy/bngr"
-      class="hover:text-gray-200 transition-colors"
+      class="hover:text-gray-900 dark:hover:text-gray-200 transition-colors duration-300 text-blue-600 dark:text-blue-400"
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -110,7 +129,7 @@
     </a>
     <a
       href="https://raphaelluethy.ch"
-      class="hover:text-gray-200 transition-colors"
+      class="hover:text-gray-900 dark:hover:text-gray-200 transition-colors duration-300 text-blue-600 dark:text-blue-400"
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -118,13 +137,16 @@
     </a>
     <a
       href="https://github.com/raphaelluethy"
-      class="hover:text-gray-200 transition-colors"
+      class="hover:text-gray-900 dark:hover:text-gray-200 transition-colors duration-300 text-blue-600 dark:text-blue-400"
       target="_blank"
       rel="noopener noreferrer"
     >
       GitHub
     </a>
-    <a href="/manage-bangs.html" class="hover:text-gray-200 transition-colors">
+    <a
+      href="/manage-bangs.html"
+      class="hover:text-gray-900 dark:hover:text-gray-200 transition-colors duration-300 text-blue-600 dark:text-blue-400"
+    >
       Manage Bangs
     </a>
   </div>
